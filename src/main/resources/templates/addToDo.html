@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h2>Add new action</h2>
+	<div class="error" th:if="${errorMessage}" th:utext="${errorMessage}"></div>
 	<form th:action="@{/addToDo}" th:object="${toDoForm}" method="POST">
 	<p>
 		Title:
