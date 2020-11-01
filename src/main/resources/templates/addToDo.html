@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<h2>Add new action</h2>
+	<form th:action="@{/addToDo}" th:object="${toDoForm}" method="POST">
+	<p>
+		Title:
+		<input type="text" name="title" />
+	</p>
+	<p>
+		Description:
+		<input type="text" name="description" />
+	</p>
+	<p>
+		<input type="submit" value="Add" />
+	</p>
+	</form>
+</body>
+</html>
