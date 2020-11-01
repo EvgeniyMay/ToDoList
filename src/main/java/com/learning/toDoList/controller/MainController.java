@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.learning.toDoList.form.ToDoForm;
 import com.learning.toDoList.model.ToDo;
 
 @Controller
@@ -45,8 +44,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/addToDo", method = RequestMethod.GET)
 	public String addToDo(Model model) {
-		ToDoForm toDoForm = new ToDoForm();
-		model.addAttribute("toDo", toDoForm);
+		ToDo emptyToDo = new ToDo();
+		model.addAttribute("toDo", emptyToDo);
 		
 		return "addToDo";
 	}
@@ -54,9 +53,9 @@ public class MainController {
 	@RequestMapping(value = "/addToDo", method = RequestMethod.POST)
 	public String saveToDo(Model model,
 			@ModelAttribute("toDoForm")
-			ToDoForm toDoForm) {
-		String title = toDoForm.getTitle();
-		String description = toDoForm.getDescription();
+			ToDo inputToDo) {
+		String title = inputToDo.getTitle();
+		String description = inputToDo.getDescription();
 		
 		if(title != null && title.length() > 0
 			&& description != null && description.length() > 0) {
