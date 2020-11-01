@@ -11,12 +11,11 @@
 		<header>
 			<nav>
 				<a th:href="@{/}">Home</a>
-				<a th:href="@{/addToDo}">add ToDo</a>
 			</nav>
 			<h2>To Do List</h2>
 		</header>
 		<main>
-			<table border=1>
+			<table>
 				<tr>
 					<th> Title </th>
 					<th> Description </th>
@@ -26,6 +25,24 @@
 					<td th:utext="${toDo.description}"></td>
 				</tr>
 			</table>
+			
+			<div class="error" th:if="${inputError}">
+				Incorrect input
+			</div>
+			
+			<form th:action="@{/addToDo}" th:object="${inputToDo}" method="POST">
+			<table>
+				<tr>
+					<th> Title </th>
+					<th> Description </th>
+				</tr>
+				<tr>
+					<td><input type="text" name="title" /></td>
+					<td><input type="text" name="description" /></td>
+				</tr>
+			</table>
+			<button type="submit"> Add </button>
+			</form>
 		</main>
 	</div>
 </div>

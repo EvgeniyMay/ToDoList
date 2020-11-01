@@ -17,8 +17,7 @@ public class MainController {
 	
 	private static List<ToDo> toDoList = new ArrayList<ToDo>();
 	
-	@Value("${error.message}")
-	private String errorMessage;
+	private boolean inputError = false;
 	
 	static {
 		toDoList.add(new ToDo("Normal to do", "Create a normal to do list"));
@@ -34,21 +33,14 @@ public class MainController {
 	@RequestMapping(value = "/toDoList", method = RequestMethod.GET)
 	public String toDoList(Model model) {
 		model.addAttribute("toDoList", toDoList);
+		model.addAttribute("inputError", inputError);
 		
 		return "toDoList";
 	}
 	
-	@RequestMapping(value = "/addToDo", method = RequestMethod.GET)
-	public String addToDo(Model model) {
-		ToDo emptyToDo = new ToDo();
-		model.addAttribute("toDo", emptyToDo);
-		
-		return "addToDo";
-	}
-	
 	@RequestMapping(value = "/addToDo", method = RequestMethod.POST)
 	public String saveToDo(Model model,
-			@ModelAttribute("toDoForm")
+			@ModelAttribute("inputToDo")
 			ToDo inputToDo) {
 		String title = inputToDo.getTitle();
 		String description = inputToDo.getDescription();
@@ -58,11 +50,11 @@ public class MainController {
 			ToDo toDo = new ToDo(title, description);
 			toDoList.add(toDo);
 			
-			return "redirect:toDoList";
+			inputError = false;
+		} else {
+			inputError = true;
 		}
-		
-		model.addAttribute("errorMessage", errorMessage);
-		
-		return "addToDo";
+
+		return "redirect:toDoList";
 	}
 }
