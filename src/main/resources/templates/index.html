@@ -6,8 +6,15 @@
 	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Welcome</h1>
-	<h2 th:utex="${message}"></h2>
-	<a th:href="@{toDoList}">To do list</a>
+<div class="wrapper">
+	<div class="content">
+		<header>
+			<nav>
+				<a th:href="@{/toDoList}">To do list</a>
+			</nav>
+			<h2>Welcome</h2>
+		</header>
+	</div>
+</div>
 </body>
 </html>

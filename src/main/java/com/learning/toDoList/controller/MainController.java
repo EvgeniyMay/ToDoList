@@ -17,9 +17,6 @@ public class MainController {
 	
 	private static List<ToDo> toDoList = new ArrayList<ToDo>();
 	
-	@Value("${welcome.message}")
-	private String welcomeMessage;
-	
 	@Value("${error.message}")
 	private String errorMessage;
 	
@@ -30,7 +27,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("message", welcomeMessage);
 		
 		return "index";
 	}

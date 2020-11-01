@@ -6,17 +6,28 @@
 	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h2>To Do List</h2>
-	<a href="/addToDo">Add ToDo</a>
-	<table border=1>
-		<tr>
-			<th> Title </th>
-			<th> Description </th>
-		</tr>
-		<tr th:each="toDo : ${toDoList}">
-			<td th:utext="${toDo.title}"></td>
-			<td th:utext="${toDo.description}"></td>
-		</tr>
-	</table>
+<div class="wrapper">
+	<div class="content">
+		<header>
+			<nav>
+				<a th:href="@{/}">Home</a>
+				<a th:href="@{/addToDo}">add ToDo</a>
+			</nav>
+			<h2>To Do List</h2>
+		</header>
+		<main>
+			<table border=1>
+				<tr>
+					<th> Title </th>
+					<th> Description </th>
+				</tr>
+				<tr th:each="toDo : ${toDoList}">
+					<td th:utext="${toDo.title}"></td>
+					<td th:utext="${toDo.description}"></td>
+				</tr>
+			</table>
+		</main>
+	</div>
+</div>
 </body>
 </html>
