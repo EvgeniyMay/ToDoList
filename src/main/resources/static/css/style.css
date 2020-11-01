@@ -1,10 +1,6 @@
 @import "reset.css";
 
-body {
-	font-family: Arial;
-		
-	background-color: #e3e3e3;
-}
+
 
 a, a:hover, a:visited, a:active {
 	color: grey;
