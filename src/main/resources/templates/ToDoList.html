@@ -3,46 +3,31 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Welcome</title>
-	<link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{css/toDoList.css}" />
 </head>
 <body>
 <div class="wrapper">
 	<div class="content">
-		<header>
-			<nav>
+		<header class="header">
+			<h2>To Do List</h2>
+			<nav class="nav">
 				<a th:href="@{/}">Home</a>
 			</nav>
-			<h2>To Do List</h2>
 		</header>
-		<main>
-			<table>
-				<tr>
-					<th> Title </th>
-					<th> Description </th>
-				</tr>
-				<tr th:each="toDo : ${toDoList}">
-					<td th:utext="${toDo.title}"></td>
-					<td th:utext="${toDo.description}"></td>
-				</tr>
-			</table>
-			
-			<div class="error" th:if="${inputError}">
-				Incorrect input
-			</div>
-			
+		<main class="main">
+			<div class="list">
+			<ul th:each="toDo : ${toDoList}">
+				<li th:utext="${toDo.text}"></li>
+			</ul>	
 			<form th:action="@{/addToDo}" th:object="${inputToDo}" method="POST">
-			<table>
-				<tr>
-					<th> Title </th>
-					<th> Description </th>
-				</tr>
-				<tr>
-					<td><input type="text" name="title" /></td>
-					<td><input type="text" name="description" /></td>
-				</tr>
-			</table>
-			<button type="submit"> Add </button>
+				<input type="text" name="text" />
+				<button type="submit"> Add </button>
 			</form>
+			</div>
+			<div class="error" th:if="${inputError}">
+				<p>Incorrect input</p>
+			</div>
+
 		</main>
 	</div>
 </div>

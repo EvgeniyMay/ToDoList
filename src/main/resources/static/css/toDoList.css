@@ -1,0 +1,10 @@
+@import "reset.css";
+
+.wrapper {
+	height: 100vh;
+	background-color: #66A3D2;
+	
+	display: flex;
+	direction: column;
+	justify-content: center;
+}

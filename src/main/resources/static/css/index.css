@@ -35,8 +35,15 @@
 	justify-content: center;
 }
 .nav a{
+	display: block;
 	font-size: 50px;
 	color: #99FFFF;
 	text-shadow: #000066 1px 1px 0, #000066 2px 2px 0;
 	border-bottom: 2px dashed #99FFFF;
 }
+.nav a:hover {
+	color: #CCFFFF;
+	text-shadow: #000066 1px 1px 0, #000066 2px 2px 0;
+	border-bottom: 2px dashed #CCFFFF;
+}
+
