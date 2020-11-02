@@ -23,11 +23,13 @@ public class MainController {
 		toDoList.add(new ToDo("Forget about this version"));
 	}
 	
+	
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		
 		return "index";
 	}
+	
 	
 	@RequestMapping(value = "/toDoList", method = RequestMethod.GET)
 	public String toDoList(Model model) {
@@ -36,6 +38,18 @@ public class MainController {
 		
 		return "toDoList";
 	}
+	@RequestMapping(value="/deleteToDo", method = RequestMethod.POST)
+	public String deleteDoTo(Model model,
+			@ModelAttribute("code")
+			Integer code) {
+		for(int i=0; i<toDoList.size(); ++i) {
+			if(toDoList.get(i).getCode() == code)
+				toDoList.remove(i);
+		}
+		
+		return "redirect:toDoList";
+	}
+	
 	
 	@RequestMapping(value = "/addToDo", method = RequestMethod.POST)
 	public String saveToDo(Model model,

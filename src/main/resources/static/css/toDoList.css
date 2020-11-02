@@ -42,8 +42,13 @@
 	color: #06266F;
 }
 .list li {
+	display: flex;
+	flex-direction: row;
 	padding: 5px;
 	border-bottom: 2px dashed #06266F;
+}
+.list form {
+	margin-right: 5px;
 }
 
 .form form {
