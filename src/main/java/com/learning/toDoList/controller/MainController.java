@@ -15,21 +15,13 @@ import com.learning.toDoList.model.ToDo;
 public class MainController {
 	
 	private static List<ToDo> toDoList = new ArrayList<ToDo>();
-	
 	private boolean inputError = false;
 	
-	static {
-		toDoList.add(new ToDo("Create a normal to do list"));
-		toDoList.add(new ToDo("Forget about this version"));
-	}
-	
-	
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index() {
 		
 		return "index";
 	}
-	
 	
 	@RequestMapping(value = "/toDoList", method = RequestMethod.GET)
 	public String toDoList(Model model) {
@@ -38,6 +30,7 @@ public class MainController {
 		
 		return "toDoList";
 	}
+	
 	@RequestMapping(value="/deleteToDo", method = RequestMethod.POST)
 	public String deleteDoTo(Model model,
 			@ModelAttribute("code")
@@ -49,7 +42,6 @@ public class MainController {
 		
 		return "redirect:toDoList";
 	}
-	
 	
 	@RequestMapping(value = "/addToDo", method = RequestMethod.POST)
 	public String saveToDo(Model model,
